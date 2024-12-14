@@ -39,7 +39,7 @@ jobs:
             ${{ runner.os }}-pip-
 
   test-python2:
-    needs: test-python39
+    needs: test-python1
     runs-on: ubuntu-latest
 
     strategy:
