@@ -5,31 +5,25 @@ on: [push]
 jobs:
   test-python1:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         python-version: ["3.12"]
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         working-directory: .
-
       - name: Test with pytest
         run: |
           pip install pytest
           pytest
         working-directory: .
-
       - name: Cache pip packages
         uses: actions/cache@v4
         with:
@@ -41,31 +35,25 @@ jobs:
   test-python2:
     needs: test-python1
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         python-version: ["3.13"]
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         working-directory: .
-
       - name: Test with pytest
         run: |
           pip install pytest
           pytest
         working-directory: .
-
       - name: Cache pip packages
         uses: actions/cache@v4
         with:
