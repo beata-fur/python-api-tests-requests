@@ -1,8 +1,6 @@
 name: Python Project CI
 
-on:
-  push:
-    branches: [ master ]
+on: [push]
 
 jobs:
   test:
